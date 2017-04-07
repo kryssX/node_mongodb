@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>node_mongodb</title>
+
+		<link rel="stylesheet" href="styles/styles.css">
+
+		<script src="vendor/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>node_mongodb</h1>
+
+		<ul class="quotes">
+			<% for(var i=0; i<quotes.length; i++) {%>
+			<li class="quote-item" data-item-id="<%= quotes[i].itemId %>">
+				<span>Name: <input type="text" class="text-name" value="<%= quotes[i].name %>"></span>
+				<br>
+				<span>Quotes: <input type="text" class="text-quote" value="<%= quotes[i].quote %>"></span>
+				<br>
+
+				<button type="button" class="btn-update">Update</button>
+				<br>
+				<span>Id: <%= quotes[i].itemId %></span>
+				<!-- <br>
+				<button class="btn-update"> Darth Vadar invades! </button> -->
+				<br>
+				<br>
+
+				<button class="btn-delete" data-qoute-id="<%= quotes[i].itemId %>"> Delete this qoute </button>
+				
+			</li>
+			<% } %>
+		</ul>
+
+
+		<p><button id="deleteAll"> Delete all records </button></p>
+
+		<form action="/quotes" method="POST">
+			<input type="text" placeholder="name" name="name">
+			<input type="text" placeholder="quote" name="quote">
+			<button type="submit">Submit</button>
+		</form>
+		<script src="main.js"></script>
+	</body>
+</html>
