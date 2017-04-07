@@ -91,7 +91,7 @@ app.delete('/quotes', (req, res) => {
 });
 
 
-// Delete qoute
+// Delete all qoute
 app.delete('/quotesDeleteAll', (req, res) => {
 	db.collection('quotes').remove({},
 	(err, result) => {
@@ -100,16 +100,5 @@ app.delete('/quotesDeleteAll', (req, res) => {
 		res.send(result);
 	})
 });
-// // Delete all qoute
-// app.deleteAll('/quotes', (req, res) => {
-// 	db.collection('quotes').remove({},
-// 	(err, result) => {
-// 		if (err) return res.send(500, err)
-// 		console.log('deleted from database');
-// 		// res.send('A darth vadar quote got deleted')
-// 		// res.redirect('/');
-// 	})
-// });
 
-// db.bios.remove( { } )
 

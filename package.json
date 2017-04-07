@@ -10,9 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "browser-sync": "^2.18.8",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0",
     "mongodb": "^2.2.25",
     "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "run-sequence": "^1.2.2"
   }
 }

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>node_mongodb</title>
 
-		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="stylesheet" href="styles/css/styles.css">
 
 		<script src="vendor/jquery.min.js"></script>
 	</head>
@@ -42,6 +42,17 @@
 			<input type="text" placeholder="quote" name="quote">
 			<button type="submit">Submit</button>
 		</form>
+
+		<div class="overlay-wrapper">
+			<div class="overlay-container">
+				<button class="btn-close">Close</button>
+				<div class="confirm-box">
+					<h2>It will delete all records, are you sure?</h2>
+					<button class="btn-true" data-confirm="true">Yes</button>
+					<button class="btn-false" data-confirm="false">No, Cancel</button>
+				</div>
+			</div>
+		</div>
 		<script src="main.js"></script>
 	</body>
 </html>

@@ -23,7 +23,11 @@ function deleteQuote(currentId) {
 
 // Delete all button
 $('#deleteAll').on('click', function(){
-	deleteAllQuote();
+
+	if (confirm("It will delete all records, are you sure!") == true) {
+		deleteAllQuote();
+	}
+	
 });
 
 function deleteAllQuote(currentId) {
