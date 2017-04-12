@@ -1,0 +1,48 @@
+.col-12x12{
+	width:100%;
+}
+.col-12x9{
+	width:100%;
+}
+.col-12x6{
+	width:100%;
+}
+.col-12x4{
+	width:50%;
+}
+.col-12x3{
+	width:50%;
+}
+.col-12x2{
+	width:50%;
+}
+.col-12x1{
+	width:50%;
+}
+
+
+@media screen and (min-width: 48em) {
+	
+	.col-12x12{
+		width:100%;
+	}
+	.col-12x9{
+		width:75%;
+	}
+	.col-12x6{
+		width:50%;
+	}
+	.col-12x4{
+		width:33.333%;
+	}
+	.col-12x3{
+		width:25%;
+	}
+	.col-12x2{
+		width:16.666%;
+	}
+	.col-12x1{
+		width:8.3333%;
+	}
+
+}

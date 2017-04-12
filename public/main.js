@@ -1,8 +1,7 @@
 
 // Delete button
 $('.btn-delete').on('click', function(){
-	// var itemId = $(this).data('qoute-id');
-	var itemId = $(this).parent('.quote-item').data('item-id');
+	var itemId = $(this).closest('.quote-item').data('item-id');
 	deleteQuote(itemId);
 });
 
@@ -23,11 +22,9 @@ function deleteQuote(currentId) {
 
 // Delete all button
 $('#deleteAll').on('click', function(){
-
 	if (confirm("It will delete all records, are you sure!") == true) {
 		deleteAllQuote();
 	}
-	
 });
 
 function deleteAllQuote(currentId) {
@@ -45,14 +42,15 @@ function deleteAllQuote(currentId) {
 
 // Update button
 $('.btn-update').on('click', function(){
-	var item = $(this).parent('.quote-item');
-	updateQuote(item);
+	// var item = $(this).parent('.quote-item');
+	var itemId = $(this).closest('.quote-item');
+	updateQuote(itemId);	
 });
 
 function updateQuote(currentItem) {
 	// Send PUT Request here
 
-	var itemId = currentItem.data('item-id');
+	var itemId = currentItem.data('item-id').toString();
 	var textName = currentItem.find('.text-name').val();
 	var textQuote = currentItem.find('.text-quote').val();
 

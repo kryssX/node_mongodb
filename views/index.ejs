@@ -5,51 +5,63 @@
 		<meta charset="UTF-8">
 		<title>node_mongodb</title>
 
-		<link rel="stylesheet" href="styles/css/styles.css">
+		<link rel="stylesheet" href="dist/styles/css/styles.css">
 
 		<script src="vendor/jquery.min.js"></script>
 	</head>
 	<body>
-		<h1>node_mongodb</h1>
+		<div class="container">
 
-		<ul class="quotes">
-			<% for(var i=0; i<quotes.length; i++) {%>
-			<li class="quote-item" data-item-id="<%= quotes[i].itemId %>">
-				<span>Name: <input type="text" class="text-name" value="<%= quotes[i].name %>"></span>
-				<br>
-				<span>Quotes: <input type="text" class="text-quote" value="<%= quotes[i].quote %>"></span>
-				<br>
+			<header>
+				<section class="gc">
+				<h1>node_mongodb</h1>
+				</section>
+			</header>
 
-				<button type="button" class="btn-update">Update</button>
-				<br>
-				<span>Id: <%= quotes[i].itemId %></span>
-				<!-- <br>
-				<button class="btn-update"> Darth Vadar invades! </button> -->
-				<br>
-				<br>
+			<section class="quotes">
+				<% for(var i=0; i<quotes.length; i++) {%>
+				<div class="quote-item col-12x3" data-item-id="<%= quotes[i].itemId %>">
 
-				<button class="btn-delete" data-qoute-id="<%= quotes[i].itemId %>"> Delete this qoute </button>
-				
-			</li>
-			<% } %>
-		</ul>
+					<div class="info-wrapper">
+						<div>
+							<label>Name:</label>
+							<input type="text" class="text-name" value="<%= quotes[i].name %>">
+						</div>
+						<div>
+							<label>Quotes:</label> 
+							<input type="text" class="text-quote" value="<%= quotes[i].quote %>">
+						</div>
+
+						<button type="button" class="btn-update">Update</button>
+					</div>
+					<div class="more-info">
+						<button class="btn-delete" data-qoute-id="<%= quotes[i]._id %>"> Delete this qoute </button>
+					</div>
+				</div>
+				<% } %>
+			</section>
 
 
-		<p><button id="deleteAll"> Delete all records </button></p>
+			<section class="gc">
+				<p><button id="deleteAll" class="btn-delete-all"> Delete all records </button></p>
+			</section>
 
-		<form action="/quotes" method="POST">
-			<input type="text" placeholder="name" name="name">
-			<input type="text" placeholder="quote" name="quote">
-			<button type="submit">Submit</button>
-		</form>
+			<section class="gc">
+				<form action="/quotes" method="POST">
+					<input type="text" placeholder="name" name="name">
+					<input type="text" placeholder="quote" name="quote">
+					<button type="submit" class="btn-submit">Submit</button>
+				</form>
+			</section>
 
-		<div class="overlay-wrapper">
-			<div class="overlay-container">
-				<button class="btn-close">Close</button>
-				<div class="confirm-box">
-					<h2>It will delete all records, are you sure?</h2>
-					<button class="btn-true" data-confirm="true">Yes</button>
-					<button class="btn-false" data-confirm="false">No, Cancel</button>
+			<div class="overlay-wrapper">
+				<div class="overlay-container">
+					<button class="btn-close">Close</button>
+					<div class="confirm-box">
+						<h2>It will delete all records, are you sure?</h2>
+						<button class="btn-true" data-confirm="true">Yes</button>
+						<button class="btn-false" data-confirm="false">No, Cancel</button>
+					</div>
 				</div>
 			</div>
 		</div>

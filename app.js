@@ -39,8 +39,6 @@ app.get('/', (req, res) => {
 		if (err) return console.log(err)
 		// renders index.ejs
 		res.render('index.ejs', {quotes: result})
-		console.log('result: ', result);
-		console.log('-------------');
 	})
 
 });
@@ -48,12 +46,10 @@ app.get('/', (req, res) => {
 // Add qoute
 app.post('/quotes', (req, res) => {
 	var newData = req.body;
-
 	newData.itemId = Date.now().toString();
-	// console.log('req.body: ', newData);
+
 	db.collection('quotes').save(newData, (err, result) => {
 		if (err) return console.log(err);
-
 		console.log('Saved to database');
 		res.redirect('/');
 	});
@@ -61,15 +57,18 @@ app.post('/quotes', (req, res) => {
 
 // Update qoute
 app.put('/quotes', (req, res) => {
-	db.collection('quotes').findOneAndUpdate({itemId: req.body.itemId}, {
+	var newDate = Date.now().toString();
+	db.collection('quotes').update({itemId: req.body.itemId}, 
+	{
 		$set: {
 			name: req.body.name,
 			quote: req.body.quote
 		}
-	}, {
-		sort: {_id: -1},
-		upsert: true,
-		returnNewDocument : true 
+	}, 
+	{
+		sort: {
+			_id: -1
+		}
 	}, (err, result) => {
 		if (err) return res.send(err);
 		console.log('Update in database');
@@ -84,8 +83,6 @@ app.delete('/quotes', (req, res) => {
 	(err, result) => {
 		if (err) return res.send(500, err)
 		console.log('deleted from database');
-		// res.send('A darth vadar quote got deleted')
-		// res.redirect('/');
 		res.send(result);
 	})
 });
