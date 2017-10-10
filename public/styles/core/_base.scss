@@ -21,18 +21,28 @@ body{
 	transition: max-height 1s ease;
 }
 
-.quotes{
+.save-item{
+	max-width: 300px;
+	display: block;
+}
+
+.stored-items{
 	display: flex;
 	flex-flow: wrap row;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 
-	.quote-item {
+	.item {
 		padding: 2rem 1rem;
 		margin-bottom: 0.2rem;
 		background: #f1f1f1; 
 		border: 2px solid #fff;
+
+
+		img{
+			max-width: 100%;
+		}
 	}
 
 	.info-wrapper{
@@ -103,10 +113,17 @@ button.btn {
 	
 }
 
-input[type="text"]{
+input[type="text"],
+input[type="number"]{
 	padding: 0.6rem;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 
+.input-wrapper{
+	margin-bottom: 1rem;
+}
 
 .overlay-wrapper{
 

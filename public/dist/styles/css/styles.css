@@ -65,20 +65,26 @@ body {
   overflow: hidden;
   transition: max-height 1s ease; }
 
-.quotes {
+.save-item {
+  max-width: 300px;
+  display: block; }
+
+.stored-items {
   display: flex;
   flex-flow: wrap row;
   margin: 0;
   padding: 0;
   list-style: none; }
-  .quotes .quote-item {
+  .stored-items .item {
     padding: 2rem 1rem;
     margin-bottom: 0.2rem;
     background: #f1f1f1;
     border: 2px solid #fff; }
-  .quotes .info-wrapper > div {
+    .stored-items .item img {
+      max-width: 100%; }
+  .stored-items .info-wrapper > div {
     margin-bottom: 1rem; }
-  .quotes .info-wrapper label {
+  .stored-items .info-wrapper label {
     display: block; }
 
 button {
@@ -123,8 +129,15 @@ button.btn-delete-all {
   background: #B13E00;
   border-color: #FFF7F3; }
 
-input[type="text"] {
-  padding: 0.6rem; }
+input[type="text"],
+input[type="number"] {
+  padding: 0.6rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; }
+
+.input-wrapper {
+  margin-bottom: 1rem; }
 
 .overlay-wrapper {
   display: flex;
@@ -190,3 +203,64 @@ input[type="text"] {
     width: 16.666%; }
   .col-12x1 {
     width: 8.3333%; } }
+
+.upload-image-wrapper .input-hidden-camera {
+  position: absolute;
+  z-index: -1;
+  outline: none; }
+
+.upload-image-wrapper .image-preview {
+  width: 100%;
+  max-width: 320px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #FFC0CB;
+  outline: none; }
+  .upload-image-wrapper .image-preview:before {
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: 42.857%; }
+  .upload-image-wrapper .image-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; }
+  .upload-image-wrapper .image-preview .preview-0 {
+    left: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; }
+    .upload-image-wrapper .image-preview .preview-0.-active {
+      left: 0; }
+  .upload-image-wrapper .image-preview .preview-0.-active {
+    opacity: 1;
+    transition: left 0.5s ease-in-out; }
+  .upload-image-wrapper .image-preview.-active .image-info {
+    left: auto;
+    right: 0rem;
+    top: 1rem;
+    padding: 0.5rem;
+    transform: scale(0.8);
+    background: rgba(255, 255, 255, 0.5); }
+  .upload-image-wrapper .image-preview:hover {
+    cursor: pointer; }
+    .upload-image-wrapper .image-preview:hover .image-info svg {
+      transform: scale(1.2); }
+  .upload-image-wrapper .image-preview .image-info {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -16px;
+    z-index: 100;
+    transform: translate(50%, 0%);
+    transition: transform 0.5s ease-in-out, right 0.5s ease-in-out, top 0.5s ease-in-out; }
+    .upload-image-wrapper .image-preview .image-info svg {
+      fill: #000;
+      stroke-width: 0; }

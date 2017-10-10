@@ -1,3 +1,28 @@
+// upload image
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		var imagePreview = $(input).next('.image-preview');
+		$('.preview-0', imagePreview).removeClass('-active');
+		
+		reader.onload = function (e) {
+			$('.preview-0', imagePreview).attr('src', e.target.result);
+			$('#input-camera').val(e.target.result);
+			
+			setTimeout(function(){
+				$('.preview-0', imagePreview).addClass('-active');
+			},10)	
+		}
+
+		reader.readAsDataURL(input.files[0]);
+		imagePreview.addClass('-active');
+	}
+}
+$(".input-hidden-camera").change(function(){
+    readURL(this);
+});
+
 
 // Delete button
 $('.btn-delete').on('click', function(){
@@ -6,7 +31,7 @@ $('.btn-delete').on('click', function(){
 });
 
 function deleteQuote(currentId) {
-	fetch('quotes', {
+	fetch('catches', {
 		method: 'delete',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -28,7 +53,7 @@ $('#deleteAll').on('click', function(){
 });
 
 function deleteAllQuote(currentId) {
-	fetch('quotesDeleteAll', {
+	fetch('catchesDeleteAll', {
 		method: 'delete',
 		headers: {'Content-Type': 'application/json'}
 	}).then(res => {
@@ -54,7 +79,7 @@ function updateQuote(currentItem) {
 	var textName = currentItem.find('.text-name').val();
 	var textQuote = currentItem.find('.text-quote').val();
 
-	fetch('quotes', {
+	fetch('catches', {
 		method: 'put',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
@@ -72,12 +97,12 @@ function updateQuote(currentItem) {
 
 // var update = document.getElementById('update');
 
-// function updateQoute(currentItem) {
+// function updatecatch(currentItem) {
 // 	// Send PUT Request here
 
-// 	var itemId = currentItem.data('qoute-id');
+// 	var itemId = currentItem.data('catch-id');
 
-// 	fetch('quotes', {
+// 	fetch('catches', {
 // 		method: 'put',
 // 		headers: {'Content-Type': 'application/json'},
 // 		body: JSON.stringify({
@@ -96,7 +121,7 @@ function updateQuote(currentItem) {
 // var del = document.getElementById('delete')
 
 // del.addEventListener('click', function () {
-//   fetch('quotes', {
+//   fetch('catches', {
 //     method: 'deleteAll',
 //     headers: {
 //       'Content-Type': 'application/json'

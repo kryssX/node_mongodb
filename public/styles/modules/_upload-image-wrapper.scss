@@ -1,0 +1,97 @@
+
+
+
+
+.upload-image-wrapper{
+
+	.input-hidden-camera{
+		position: absolute;
+		z-index: -1;
+		outline: none;
+	}
+
+	.image-preview{
+		width: 100%;
+		max-width: 320px;
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		background: $color-1;
+		outline: none;
+
+		&:before {
+			display: block;
+			content: " ";
+			width: 100%;
+			padding-top: 42.857%;
+		}
+
+		img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: auto;
+			width: 100%;
+			opacity: 0;
+			transition: opacity $animate-speed ease-in-out;
+		}
+
+		.preview-0{
+			left:100%;
+			max-height: 100%;
+			max-width: 100%;
+			object-fit: contain;
+
+			&.-active{
+				left:0;
+			}
+		}
+
+		.preview-0{
+
+			&.-active{
+				opacity: 1;
+
+			transition: left $animate-speed ease-in-out;
+			}
+		}
+		&.-active{
+			.image-info{
+				left: auto;
+				right: 0rem;
+				top: 1rem;
+				padding: 0.5rem;
+				transform: scale(0.8);
+				background: rgba(255,255,255,0.5);
+			}
+		}
+
+		&:hover{
+			cursor: pointer;
+			.image-info{
+				svg{
+					transform: scale(1.2);
+				}
+			}
+		}
+
+		.image-info{
+			position: absolute;
+			right:50%;
+			top:50%;
+			margin-top: -16px;
+			z-index: 100;
+			transform: translate(50%, 0%);
+			transition: transform $animate-speed ease-in-out, right $animate-speed ease-in-out, top $animate-speed ease-in-out;
+
+			svg{
+				fill: #000;
+				stroke-width: 0;
+
+			}
+		}
+	}
+	
+}

@@ -33,32 +33,33 @@ MongoClient.connect(url, (err, database) => {
 
 // request, response
 
-// Show qoutes
+// Show catches
 app.get('/', (req, res) => {
-	db.collection('quotes').find().sort({name: 1}).toArray((err, result) => {
+	// db.collection('catches').find().sort({type: 1}).toArray((err, result) => {
+	db.collection('catches').find().sort({type: 1}).toArray((err, result) => {	
 		if (err) return console.log(err)
 		// renders index.ejs
-		res.render('index.ejs', {quotes: result})
+		res.render('index.ejs', {catches: result, title: 'test'})
 	})
 
 });
 
-// Add qoute
-app.post('/quotes', (req, res) => {
+// Add catch
+app.post('/catches', (req, res) => {
 	var newData = req.body;
 	newData.itemId = Date.now().toString();
 
-	db.collection('quotes').save(newData, (err, result) => {
+	db.collection('catches').save(newData, (err, result) => {
 		if (err) return console.log(err);
 		console.log('Saved to database');
 		res.redirect('/');
 	});
 });
 
-// Update qoute
-app.put('/quotes', (req, res) => {
+// Update catch
+app.put('/catches', (req, res) => {
 	var newDate = Date.now().toString();
-	db.collection('quotes').update({itemId: req.body.itemId}, 
+	db.collection('catches').update({itemId: req.body.itemId}, 
 	{
 		$set: {
 			name: req.body.name,
@@ -76,10 +77,10 @@ app.put('/quotes', (req, res) => {
 	})
 });
 
-// Delete qoute
-app.delete('/quotes', (req, res) => {
-	// db.collection('quotes').remove({},
-	db.collection('quotes').findOneAndDelete({itemId: req.body.itemId},
+// Delete catch
+app.delete('/catches', (req, res) => {
+	// db.collection('catches').remove({},
+	db.collection('catches').findOneAndDelete({itemId: req.body.itemId},
 	(err, result) => {
 		if (err) return res.send(500, err)
 		console.log('deleted from database');
@@ -88,12 +89,12 @@ app.delete('/quotes', (req, res) => {
 });
 
 
-// Delete all qoute
-app.delete('/quotesDeleteAll', (req, res) => {
-	db.collection('quotes').remove({},
+// Delete all catch
+app.delete('/catchesDeleteAll', (req, res) => {
+	db.collection('catches').remove({},
 	(err, result) => {
 		if (err) return res.send(500, err)
-		console.log('deleted all quotes from database');
+		console.log('deleted all catches from database');
 		res.send(result);
 	})
 });
